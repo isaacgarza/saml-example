@@ -1,0 +1,20 @@
+{
+  "/saml/": {
+    "target": "http://localhost:8094",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin": true
+  },
+  "/admin/": {
+    "target": "http://localhost:8094",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin": true
+  },
+  "/user/": {
+    "target": "http://localhost:8094",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin": true
+  }
+}

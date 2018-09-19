@@ -1,0 +1,29 @@
+### Intellij ###
+.idea/
+*.iml
+*.iws
+
+## Build Artifacts ##
+target/
+target\\generated-sources\\annotations/
+log/
+build/
+dist/
+out-tsc/
+
+## Dependencies ##
+node_modules/
+
+## Node ##
+node/
+
+## Stylings ##
+/.sass-cache
+*.css
+*.css.map
+
+## Yarn ##
+package-lock.json
+*.lock
+yarn-error.log
+

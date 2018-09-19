@@ -1,0 +1,16 @@
+@import "material-color-palettes";
+@import '~@angular/material/theming';
+
+$theme-font: 'OpenSans', sans-serif;
+
+$theme-primary: #1E237E;
+$theme-secondary: #003EA9;
+$theme-tertiary: #565656;
+
+$st-mat-theme-primary: mat-palette($mat-primary);
+$st-mat-theme-accent: mat-palette($mat-accent);
+
+$st-theme: mat-light-theme(
+    $st-mat-theme-primary,
+    $st-mat-theme-accent
+);

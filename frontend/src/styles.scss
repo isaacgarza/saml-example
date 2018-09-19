@@ -1,0 +1,136 @@
+@import '../node_modules/@angular/material/theming';
+
+@include mat-core();
+
+@import "/assets/_stys/theme";
+
+.login-navbar {
+  border: 0;
+  border-radius: 0;
+  margin-bottom: 40px;
+  min-height: 74px;
+}
+
+.login-navbar-container {
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.login-navbar-logo {
+  font-size: 20px;
+  color: #333333;
+
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  float: left;
+  padding: 15px 15px;
+  border-radius: 50%;
+}
+
+.page-container {
+  min-height: 90vh;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+
+  background: no-repeat center;
+  background-size: cover;
+  position: relative;
+  z-index: 1;
+}
+
+.page-content {
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 200px;
+}
+
+.page-header {
+  margin-bottom: 30px;
+}
+
+h1 {
+  font-size: 60px;
+  font-family: $theme-font;
+  line-height: 1.1;
+  -webkit-font-smoothing: antialiased;
+}
+
+.st-theme .mat-form-field-label {
+  font-family: $theme-font;
+}
+
+.mat-form-field {
+  font-size: 20px;
+  width: 100%;
+  font-family: $theme-font;
+  -webkit-font-smoothing: antialiased;
+}
+
+.mat-focused  .mat-form-field-label {
+  color: $theme-primary;
+}
+
+.mat-button {
+  justify-content: center;
+  align-self: center;
+}
+
+.login-btn {
+  margin: 30px 0 0 0;
+}
+
+.login-btn--label {
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  cursor: pointer;
+  -webkit-box-flex: 0;
+  flex: 0 0 auto;
+  -webkit-box-pack: center;
+  justify-content: center;
+  margin: auto;
+  padding: 0 1.42857143rem;
+  text-align: center;
+  color: #ffffff;
+}
+
+.login-btn-text {
+  background: $theme-primary;
+  -webkit-font-smoothing: antialiased;
+  cursor: pointer !important;
+  transition: background .25s ease;
+  -webkit-box-align: center;
+  align-items: center;
+  background: $theme-secondary;
+  letter-spacing: 0.05357143rem;
+  min-height: 40px;
+  padding: 0 !important;
+  text-transform: uppercase;
+}
+
+.login-btn-text:focus, .login-btn-text:hover, .login-btn-text:active {
+  background: #404491;
+  text-decoration: none;
+}
+
+.login-btn-text:hover, .login-btn-text:focus, .login-btn-text:active {
+  color: #ffffff;
+}
