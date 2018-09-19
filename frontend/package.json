@@ -6,7 +6,6 @@
     "ng": "ng",
     "start": "ng serve -o --proxy-config proxy.config.json --port 8080",
     "prod-start": "ng build --prod && lite-server --baseDir=\"dist\" -c bs-config.js",
-    "json-server": "json-server json-server/client-audit.js --routes json-server/routes.json --port 8080",
     "build": "ng build --prod",
     "test": "ng test -sr -cc",
     "lint": "tslint ./app/**/*.ts -t verbose",
@@ -29,7 +28,6 @@
     "classlist.js": "^1.1.20150312",
     "core-js": "^2.4.1",
     "intl": "^1.2.5",
-    "moment": "2.18.1",
     "rxjs": "^5.5.2",
     "zone.js": "^0.8.18"
   },
@@ -45,7 +43,6 @@
     "http-proxy-middleware": "^0.18.0",
     "jasmine-core": "~2.6.2",
     "jasmine-spec-reporter": "~4.1.0",
-    "json-server": "^0.14.0",
     "karma": "~1.7.0",
     "karma-chrome-launcher": "~2.1.1",
     "karma-cli": "~1.0.1",
