@@ -25,7 +25,9 @@ SAML 2.0 Service Provider Example
 
 ## Project description
 
-This project is a simple **SAML 2.0 Service Provider**, built using **Angular 5** and the **Spring Framework**. It was made to demonstrate how an enterprise application might implement single sign-on. The Spring security configuration was written using Java annotations and no XML is used (thanks to Vincenzo De Notaris mentioned below).
+This project is a simple **SAML 2.0 Service Provider**, built using **Angular 5** and the **Spring Framework**. It was made to demonstrate how an enterprise application might implement single sign-on using SAML. The Spring security configuration was written using Java annotations with no XML is used (thanks to Vincenzo De Notaris mentioned below).
+
+The Angular part of the project runs on port 8080 and the Sprint Boot part runs on port 8094. The Angular portion must run on 8080 as the service provider URL was configured with the identity provider to use localhost:8080.
 
 **[SSOCircle](http://www.ssocircle.com/en/portfolio/publicidp/)** is used as a public Identity Provider for testing purposes. You must make an account to use this application.
 
