@@ -35,6 +35,7 @@ import org.springframework.beans.factory.config.MethodInvokingFactoryBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
+import org.springframework.core.io.Resource;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -101,9 +102,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     private MultiThreadedHttpConnectionManager multiThreadedHttpConnectionManager;
 
-    @Value("${filePath}")
-    private String filePath;
-
     @Value("${sp.entityId}")
     private String spEntityId;
 
@@ -119,14 +117,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Value("${lb.scheme}")
     private String lbScheme;
 
-    @Value("${idp.ssoCircle}")
-    private String idpPath;
+    @Value(value = "classpath:saml/metadata/idp.xml")
+    private Resource idpXML;
 
     @Value("${idp.ssoCircleEntityId}")
     private String entityId;
 
-    @Value("${keystore.samlKeystore}")
-    private String samlKeystorePath;
+    @Value(value = "classpath:saml/keystore/samlKeystore.jks")
+    private Resource samlKeystore;
 
     @Value("${keystore.alias}")
     private String keystoreAlias;
@@ -255,7 +253,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     public KeyManager keyManager() {
         KeyStore keyStore = null;
-        try (FileInputStream fileInputStream = new FileInputStream(filePath + samlKeystorePath)) {
+        try (FileInputStream fileInputStream = new FileInputStream(samlKeystore.getFile())) {
             keyStore = KeyStore.getInstance("JKS");
             keyStore.load(fileInputStream, keystorePass.toCharArray());
         } catch (IOException | CertificateException | NoSuchAlgorithmException | KeyStoreException e) {
@@ -326,11 +324,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     @Qualifier("idp-sso-circle")
     public ExtendedMetadataDelegate extendedMetadataProvider()
-            throws MetadataProviderException {
+            throws MetadataProviderException, IOException {
         ExtendedMetadataDelegate extendedMetadataDelegate;
-        File metadata = new File(filePath + idpPath);
         FilesystemMetadataProvider filesystemMetadataProvider =
-                new FilesystemMetadataProvider(this.backgroundTaskTimer, metadata);
+                new FilesystemMetadataProvider(this.backgroundTaskTimer, idpXML.getFile());
         filesystemMetadataProvider.setParserPool(parserPool());
         extendedMetadataDelegate = new ExtendedMetadataDelegate(filesystemMetadataProvider, extendedMetadata());
         extendedMetadataDelegate.setMetadataTrustCheck(true);
@@ -343,7 +340,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     // Do no forget to call initialize method on providers
     @Bean
     @Qualifier("metadata")
-    public CachingMetadataManager metadata() throws MetadataProviderException {
+    public CachingMetadataManager metadata() throws MetadataProviderException, IOException {
         List<MetadataProvider> providers = new ArrayList<>();
         providers.add(extendedMetadataProvider());
         CachingMetadataManager cachingMetadataManager = new CachingMetadataManager(providers);
